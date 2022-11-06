@@ -1,12 +1,38 @@
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/logo.svg';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOutUser } = useContext(AuthContext);
+    const handleLogout = ()=> {
+        logOutUser()
+        .then(()=>{
+
+        })
+        .catch(error=> console.log('error', error))
+    }
+
     const menuItems = <>
         <li><Link to='/home'>Home</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/register'>Register</Link></li>
+        <li><Link to='/services' >Services</Link></li>
+        <>
+            {
+                user?.email ?
+                <>
+                    <li><Link onClick={handleLogout}>Logout</Link></li>
+                </>
+                :
+                <>
+                    <li><Link to='/register'>Register</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
+                </>
+            }
+        </>
     </>
+
+   
+
 
     return (
         <div className="navbar h-20 mb-12 pb-14 pt-12 bg-base-100">
@@ -20,7 +46,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link className="btn btn-ghost normal-case text-xl">
-                    <img src={Logo} alt=""/>
+                    <img src={Logo} alt="" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
