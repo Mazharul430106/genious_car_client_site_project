@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import image from '../../assets/images/login/login.svg'
 
 const Login = () => {
+  
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row gap-32">
