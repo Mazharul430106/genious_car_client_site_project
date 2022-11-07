@@ -16,6 +16,7 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/home'>Home</Link></li>
         <li><Link to='/services' >Services</Link></li>
+        <li><Link to='/orders'>Orders</Link></li>
         <>
             {
                 user?.email ?
@@ -30,9 +31,6 @@ const Header = () => {
             }
         </>
     </>
-
-   
-
 
     return (
         <div className="navbar h-20 mb-12 pb-14 pt-12 bg-base-100">
